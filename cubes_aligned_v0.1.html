@@ -45,8 +45,8 @@
 
 				setLayout(i + '' + j, w, h, fs);
 
-				d.style.left = Math.floor(j * w/numOfDivsHor) + 'px';
-				d.style.top = Math.floor(i * h/numOfDivsVer) + 'px';
+				d.style.left = j * Math.floor(w/numOfDivsHor) + 'px';
+				d.style.top = i * Math.floor(h/numOfDivsVer) + 'px';
 				d.style.backgroundColor = 'rgb(120, ' + Math.round(i * 25.5) + ', ' + Math.round(j * 25.5) + ')';
 			}
 
