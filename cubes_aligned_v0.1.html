@@ -1,0 +1,76 @@
+<html>
+<head>
+<style>
+	body {
+		margin: 0;
+		padding: 0;
+	}
+	
+	.d {
+		position: fixed;
+		margin: 0;
+		padding: 0;
+		border: 0px;
+
+		background-color: #A1F1F1;
+		text-align: center;
+		
+
+	}
+</style>
+</head>
+<body>
+	
+	<script>
+	
+	var numOfDivsHor = 10;
+	var numOfDivsVer = 10;
+
+	function setCubeSize() {
+		
+		document.body.innerHTML = '';
+
+		var w = document.body.clientWidth;
+		var h = document.body.clientHeight;
+		var fs = h/numOfDivsVer/3;
+
+		for (i=0; i < numOfDivsHor; i++) {
+			for (j=0; j < numOfDivsVer; j++) {
+				var d = document.createElement('div');
+				document.getElementsByTagName('body')[0].appendChild(d);
+
+				d.id = i + '' + j;
+				d.className = 'd';
+				d.innerHTML = i + '' + j;
+
+				setLayout(i + '' + j, w, h, fs);
+
+				d.style.left = Math.floor(j * w/numOfDivsHor) + 'px';
+				d.style.top = Math.floor(i * h/numOfDivsVer) + 'px';
+				d.style.backgroundColor = 'rgb(120, ' + Math.round(i * 25.5) + ', ' + Math.round(j * 25.5) + ')';
+			}
+
+		}
+		
+	}
+	
+	function setLayout(divId, w, h, fs) {
+		var d = document.getElementById(divId);
+		d.style.width = 100/numOfDivsHor + '%';
+		d.style.height = 100/numOfDivsVer + '%';
+		d.style.fontSize = fs + 'px';
+		d.style.paddingTop = (h/numOfDivsVer - fs)/2 + 'px';
+		
+	}
+
+	document.addEventListener('DOMContentLoaded', function() {;
+		setCubeSize();
+	});
+
+	window.addEventListener('resize', function() {
+		setCubeSize();
+	});
+
+	</script>
+</body>
+</html>
